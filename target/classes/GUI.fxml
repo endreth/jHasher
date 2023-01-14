@@ -1,0 +1,1197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GUIController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem fx:id="MenuItemSave" mnemonicParsing="false" onAction="#MenuItemSaveAction" text="Save all (CSV)" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+              <MenuItem fx:id="MenuItemClose" mnemonicParsing="false" onAction="#MenuItemCloseAction" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+                  <MenuItem fx:id="MenuItemManual" mnemonicParsing="false" onAction="#MenuItemManualAction" text="Manual" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+              <MenuItem fx:id="MenuItemAbout" mnemonicParsing="false" onAction="#MenuItemAboutAction" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <TabPane prefHeight="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Text">
+               <graphic>
+                  <FontIcon iconColor="#bbbbbb" iconLiteral="win10-document" iconSize="20" />
+               </graphic>
+               <content>
+                  <GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="30.0" minHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="175.0" minHeight="10.0" prefHeight="175.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <HBox prefHeight="21.0">
+                           <children>
+                              <Label fx:id="lbInfoBar" text="[Text tab] Hashing single or multiple lines of text. Outputs a single hash if Line-by-Line option not used." textFill="#439eb8" HBox.hgrow="ALWAYS">
+                                 <graphic>
+                                    <FontIcon iconColor="#439eb8" iconLiteral="win10-info" iconSize="20" />
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="180.0" GridPane.rowIndex="1">
+                           <children>
+                              <VBox fx:id="vboxAlgorithm" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Label prefHeight="25.0" prefWidth="80.0" text="Algorithm:" />
+                                          <ComboBox fx:id="cbAlgorithms" onAction="#cbAlgorithmsAction" prefHeight="25.0" prefWidth="150.0" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <CheckBox fx:id="cbAddSalt" mnemonicParsing="false" prefHeight="25.0" text="Add salt" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox layoutX="10.0" layoutY="36.0" prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <CheckBox fx:id="cbAddPepper" mnemonicParsing="false" prefHeight="25.0" text="Add pepper" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox layoutX="15.0" layoutY="15.0" prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <CheckBox fx:id="cbParallelize" mnemonicParsing="false" prefHeight="25.0" text="Parallelize" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="15.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox fx:id="vboxInputOptions" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <CheckBox fx:id="cbLineByLine" mnemonicParsing="false" onAction="#LineByLineAction" prefHeight="25.0" text="Line-by-line" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Label prefHeight="25.0" prefWidth="80.0" text="Separator:" />
+                                          <TextField fx:id="tfSeparator" prefHeight="25.0" prefWidth="150.0" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <CheckBox fx:id="cbLowercase" mnemonicParsing="false" onAction="#LowercaseAction" prefHeight="25.0" text="Lowercase" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <CheckBox fx:id="cbRemSpaces" mnemonicParsing="false" onAction="#RemSpacesAction" prefHeight="25.0" text="Remove spaces" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <CheckBox fx:id="cbNormalize" mnemonicParsing="false" onAction="#NormAction" prefHeight="25.0" text="Normalize" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox fx:id="vboxInputOptions2" layoutX="270.0" layoutY="30.0" prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="btnLoadFile" mnemonicParsing="false" onAction="#LoadTextAction" prefHeight="25.0" prefWidth="85.0" text="Load File" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="btnClearInput" mnemonicParsing="false" onAction="#ClearInputAction" prefHeight="25.0" prefWidth="85.0" text="Clear Input" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="btnClearOutput" mnemonicParsing="false" onAction="#ClearOutputAction" prefHeight="25.0" prefWidth="85.0" text="Clear Output" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox prefHeight="100.0" prefWidth="100.0">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Button fx:id="btnHash" mnemonicParsing="false" onAction="#HashTextAction" prefHeight="25.0" prefWidth="85.0" text="Hash">
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Button>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox GridPane.rowIndex="2">
+                           <children>
+                              <VBox HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Label prefHeight="25.0" text="Input (max. 5000 chars) :" />
+                                    <TextArea fx:id="taInput" prefHeight="75.0" prefWidth="760.0" wrapText="true" VBox.vgrow="ALWAYS">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </TextArea>
+                                    <Label layoutX="10.0" layoutY="10.0" prefHeight="25.0" text="Output:" />
+                                    <ListView fx:id="lvOutput" prefHeight="175.0" prefWidth="760.0" VBox.vgrow="ALWAYS">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </ListView>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </GridPane>
+               </content>
+          </Tab>
+          <Tab text="File">
+            <content>
+                  <GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="30.0" minHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="175.0" minHeight="10.0" prefHeight="175.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <HBox prefHeight="21.0">
+                           <children>
+                              <Label fx:id="lbInfoBar_f" text="[File tab] Hashing a single file. Outputs a single hash for the selected file." textFill="#439eb8" HBox.hgrow="ALWAYS">
+                                 <graphic>
+                                    <FontIcon iconColor="#439eb8" iconLiteral="win10-info" iconSize="20" />
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="180.0" GridPane.rowIndex="1">
+                           <children>
+                              <VBox fx:id="vboxAlgorithm_f" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Label prefHeight="25.0" prefWidth="80.0" text="Algorithm:" />
+                                          <ComboBox fx:id="cbAlgorithms_f" onAction="#cbAlgorithmsAction_f" prefHeight="25.0" prefWidth="150.0" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <CheckBox fx:id="cbAddSalt_f" mnemonicParsing="false" prefHeight="25.0" text="Add salt" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox layoutX="10.0" layoutY="36.0" prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <CheckBox fx:id="cbAddPepper_f" mnemonicParsing="false" prefHeight="25.0" text="Add pepper" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <CheckBox fx:id="cbParallelize_f" mnemonicParsing="false" prefHeight="25.0" text="Parallelize" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="15.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox fx:id="vboxInputOptions2_f" prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="btnLoadFile_f" mnemonicParsing="false" onAction="#LoadFileAction_f" prefHeight="25.0" prefWidth="85.0" text="Load File" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="btnClearInput_f" mnemonicParsing="false" onAction="#ClearInputAction_f" prefHeight="25.0" prefWidth="85.0" text="Clear Input" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="btnClearOutput_f" mnemonicParsing="false" onAction="#ClearOutputAction_f" prefHeight="25.0" prefWidth="85.0" text="Clear Output" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox prefHeight="100.0" prefWidth="100.0">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Button fx:id="btnHash_f" mnemonicParsing="false" onAction="#HashFileAction" prefHeight="25.0" prefWidth="85.0" text="Hash">
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Button>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox GridPane.rowIndex="2">
+                           <children>
+                              <VBox HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Label prefHeight="25.0" text="Input (max. 3 GiB file) :" />
+                                    <TextArea fx:id="taInput_f" prefHeight="75.0" prefWidth="760.0" wrapText="true" VBox.vgrow="ALWAYS">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </TextArea>
+                                    <Label layoutX="10.0" layoutY="10.0" prefHeight="25.0" text="Output:" />
+                                    <ListView fx:id="lvOutput_f" prefHeight="175.0" prefWidth="760.0" VBox.vgrow="ALWAYS">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </ListView>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </GridPane>
+            </content>
+               <graphic>
+                  <FontIcon iconColor="#bbbbbb" iconLiteral="win10-file" iconSize="20" />
+               </graphic>
+          </Tab>
+            <Tab text="Directory">
+              <content>
+                  <GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="30.0" minHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="175.0" minHeight="10.0" prefHeight="175.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <HBox prefHeight="21.0">
+                           <children>
+                              <Label fx:id="lbInfoBar_d" text="[Directory tab] Hashing a single directory. Outputs a single master hash (top hash) for the selected directory." textFill="#439eb8" HBox.hgrow="ALWAYS">
+                                 <graphic>
+                                    <FontIcon iconColor="#439eb8" iconLiteral="win10-info" iconSize="20" />
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="180.0" GridPane.rowIndex="1">
+                           <children>
+                              <VBox fx:id="vboxAlgorithm_d" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Label prefHeight="25.0" prefWidth="80.0" text="Algorithm:" />
+                                          <ComboBox fx:id="cbAlgorithms_d" onAction="#cbAlgorithmsAction_d" prefHeight="25.0" prefWidth="150.0" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <CheckBox fx:id="cbAddSalt_d" mnemonicParsing="false" prefHeight="25.0" text="Add salt" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox layoutX="10.0" layoutY="36.0" prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <CheckBox fx:id="cbAddPepper_d" mnemonicParsing="false" prefHeight="25.0" text="Add pepper" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <CheckBox fx:id="cbParallelize_d" mnemonicParsing="false" prefHeight="25.0" text="Parallelize" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="15.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox fx:id="vboxInputOptions2_d" prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="btnLoadDir_d" mnemonicParsing="false" onAction="#LoadDirAction_d" prefHeight="25.0" prefWidth="85.0" text="Load Dir" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="btnClearInput_d" mnemonicParsing="false" onAction="#ClearInputAction_d" prefHeight="25.0" prefWidth="85.0" text="Clear Input" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="btnClearOutput_d" mnemonicParsing="false" onAction="#ClearOutputAction_d" prefHeight="25.0" prefWidth="85.0" text="Clear Output" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox prefHeight="100.0" prefWidth="100.0">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Button fx:id="btnHash_d" mnemonicParsing="false" onAction="#HashDirAction" prefHeight="25.0" prefWidth="85.0" text="Hash">
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Button>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox GridPane.rowIndex="2">
+                           <children>
+                              <VBox HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Label prefHeight="25.0" text="Input (max. 3 GiB files) :" />
+                                    <TextArea fx:id="taInput_d" prefHeight="75.0" prefWidth="760.0" wrapText="true" VBox.vgrow="ALWAYS">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </TextArea>
+                                    <Label layoutX="10.0" layoutY="10.0" prefHeight="25.0" text="Output:" />
+                                    <ListView fx:id="lvOutput_d" prefHeight="175.0" prefWidth="760.0" VBox.vgrow="ALWAYS">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </ListView>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </GridPane>
+              </content>
+               <graphic>
+                  <FontIcon iconColor="#bbbbbb" iconLiteral="win10-opened-folder" iconSize="20" />
+               </graphic>
+            </Tab>
+            <Tab text="Multiple Files (Dirs)">
+              <content>
+                  <GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="30.0" minHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="175.0" minHeight="10.0" prefHeight="175.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <HBox prefHeight="21.0">
+                           <children>
+                              <Label fx:id="lbInfoBar_mf" text="[Multiple Files tab] Hashing multiple files. Outputs a single hash for each file in the selected directory." textFill="#439eb8" HBox.hgrow="ALWAYS">
+                                 <graphic>
+                                    <FontIcon iconColor="#439eb8" iconLiteral="win10-info" iconSize="20" />
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="180.0" GridPane.rowIndex="1">
+                           <children>
+                              <VBox fx:id="vboxAlgorithm_mf" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Label prefHeight="25.0" prefWidth="80.0" text="Algorithm:" />
+                                          <ComboBox fx:id="cbAlgorithms_mf" onAction="#cbAlgorithmsAction_mf" prefHeight="25.0" prefWidth="150.0" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <CheckBox fx:id="cbAddSalt_mf" mnemonicParsing="false" prefHeight="25.0" text="Add salt" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox layoutX="10.0" layoutY="36.0" prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <CheckBox fx:id="cbAddPepper_mf" mnemonicParsing="false" prefHeight="25.0" text="Add pepper" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <CheckBox fx:id="cbParallelize_mf" mnemonicParsing="false" prefHeight="25.0" text="Parallelize" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="15.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox fx:id="vboxInputOptions2_mf" prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="btnLoadDir_mf" mnemonicParsing="false" onAction="#LoadMultiFileAction_mf" prefHeight="25.0" prefWidth="85.0" text="Load Dir" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="btnClearInput_mf" mnemonicParsing="false" onAction="#ClearInputAction_mf" prefHeight="25.0" prefWidth="85.0" text="Clear Input" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="btnClearOutput_mf" mnemonicParsing="false" onAction="#ClearOutputAction_mf" prefHeight="25.0" prefWidth="85.0" text="Clear Output" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox prefHeight="100.0" prefWidth="100.0">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Button fx:id="btnHash_mf" mnemonicParsing="false" onAction="#HashMultiFileAction" prefHeight="25.0" prefWidth="85.0" text="Hash">
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Button>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox GridPane.rowIndex="2">
+                           <children>
+                              <VBox HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Label prefHeight="25.0" text="Input (max. 3 GiB files) :" />
+                                    <TextArea fx:id="taInput_mf" prefHeight="75.0" prefWidth="760.0" wrapText="true" VBox.vgrow="ALWAYS">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </TextArea>
+                                    <Label layoutX="10.0" layoutY="10.0" prefHeight="25.0" text="Output:" />
+                                    <ListView fx:id="lvOutput_mf" prefHeight="175.0" prefWidth="760.0" VBox.vgrow="ALWAYS">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </ListView>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </GridPane>
+              </content>
+               <graphic>
+                  <FontIcon iconColor="#bbbbbb" iconLiteral="win10-hdd" iconSize="20" />
+               </graphic>
+            </Tab>
+            <Tab text="Compare Files">
+               <content>
+                  <GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="30.0" minHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="175.0" minHeight="10.0" prefHeight="175.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <HBox prefHeight="21.0">
+                           <children>
+                              <Label fx:id="lbInfoBar_cf" text="[Compare Files tab] Hashing two files. Outputs a single hash for each file and compare the two value. (unmatching = green, matching = red)" textFill="#439eb8" HBox.hgrow="ALWAYS">
+                                 <graphic>
+                                    <FontIcon iconColor="#439eb8" iconLiteral="win10-info" iconSize="20" />
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="180.0" GridPane.rowIndex="1">
+                           <children>
+                              <VBox fx:id="vboxAlgorithm_cf" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Label prefHeight="25.0" prefWidth="80.0" text="Algorithm:" />
+                                          <ComboBox fx:id="cbAlgorithms_cf" onAction="#cbAlgorithmsAction_cf" prefHeight="25.0" prefWidth="150.0" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <CheckBox fx:id="cbAddSalt_cf" mnemonicParsing="false" prefHeight="25.0" text="Add salt" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox layoutX="10.0" layoutY="36.0" prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <CheckBox fx:id="cbAddPepper_cf" mnemonicParsing="false" prefHeight="25.0" text="Add pepper" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <CheckBox fx:id="cbParallelize_cf" mnemonicParsing="false" prefHeight="25.0" text="Parallelize" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="15.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox fx:id="vboxInputOptions2_A_cf" prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <Label text="Input [A]">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="btnLoadFile_A_cf" mnemonicParsing="false" onAction="#LoadFileAction_A_cf" prefHeight="25.0" prefWidth="85.0" text="Load File" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="btnClearInput_A_cf" mnemonicParsing="false" onAction="#ClearInputAction_A_cf" prefHeight="25.0" prefWidth="85.0" text="Clear Input" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="btnClearOutput_A_cf" mnemonicParsing="false" onAction="#ClearOutputAction_A_cf" prefHeight="25.0" prefWidth="85.0" text="Clear Output" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox fx:id="vboxInputOptions2_B_cf" layoutX="245.0" layoutY="20.0" prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <Label text="Input [B]">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="btnLoadFile_B_cf" mnemonicParsing="false" onAction="#LoadFileAction_B_cf" prefHeight="25.0" prefWidth="85.0" text="Load File" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="btnClearInput_B_cf" mnemonicParsing="false" onAction="#ClearInputAction_B_cf" prefHeight="25.0" prefWidth="85.0" text="Clear Input" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="btnClearOutput_B_cf" mnemonicParsing="false" onAction="#ClearOutputAction_B_cf" prefHeight="25.0" prefWidth="85.0" text="Clear Output" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox prefHeight="100.0" prefWidth="100.0">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Button fx:id="btnHash_cf" mnemonicParsing="false" onAction="#HashCompFileAction" prefHeight="25.0" prefWidth="85.0" text="Hash">
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Button>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox GridPane.rowIndex="2">
+                           <children>
+                              <VBox HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Label prefHeight="25.0" text="Input [A] (max. 3 GiB file) :" />
+                                    <TextArea fx:id="taInput_A_cf" prefHeight="75.0" prefWidth="380.0" wrapText="true" VBox.vgrow="ALWAYS">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </TextArea>
+                                    <Label layoutX="10.0" layoutY="10.0" prefHeight="25.0" text="Output [A]:" />
+                                    <ListView fx:id="lvOutput_A_cf" prefHeight="175.0" prefWidth="380.0" VBox.vgrow="ALWAYS">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </ListView>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Label prefHeight="25.0" text="Input [B] (max. 3 GiB file) :" />
+                                    <TextArea fx:id="taInput_B_cf" prefHeight="75.0" prefWidth="380.0" wrapText="true" VBox.vgrow="ALWAYS">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </TextArea>
+                                    <Label layoutX="10.0" layoutY="10.0" prefHeight="25.0" text="Output [B]:" />
+                                    <ListView fx:id="lvOutput_B_cf" prefHeight="175.0" prefWidth="380.0" VBox.vgrow="ALWAYS">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </ListView>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </GridPane>
+               </content>
+               <graphic>
+                  <FontIcon iconColor="#bbbbbb" iconLiteral="win10-copy" iconSize="20" />
+               </graphic>
+            </Tab>
+            <Tab text="Compare Dirs">
+               <graphic>
+                  <FontIcon iconColor="#bbbbbb" iconLiteral="win10-copy" iconSize="20" />
+               </graphic>
+               <content>
+                  <GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="30.0" minHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="175.0" minHeight="10.0" prefHeight="175.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <HBox prefHeight="21.0">
+                           <children>
+                              <Label fx:id="lbInfoBar_cd" text="[Compare Dirs tab] Hashing two directories. Outputs a single hash for each file. (unmatching = green, matching = red)" textFill="#439eb8" HBox.hgrow="ALWAYS">
+                                 <graphic>
+                                    <FontIcon iconColor="#439eb8" iconLiteral="win10-info" iconSize="20" />
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="180.0" GridPane.rowIndex="1">
+                           <children>
+                              <VBox fx:id="vboxAlgorithm_cd" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Label prefHeight="25.0" prefWidth="80.0" text="Algorithm:" />
+                                          <ComboBox fx:id="cbAlgorithms_cd" onAction="#cbAlgorithmsAction_cd" prefHeight="25.0" prefWidth="150.0" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <CheckBox fx:id="cbAddSalt_cd" mnemonicParsing="false" prefHeight="25.0" text="Add salt" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox layoutX="10.0" layoutY="36.0" prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <CheckBox fx:id="cbAddPepper_cd" mnemonicParsing="false" prefHeight="25.0" text="Add pepper" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <CheckBox fx:id="cbParallelize_cd" mnemonicParsing="false" prefHeight="25.0" text="Parallelize" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="15.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox fx:id="vboxInputOptions2_A_cd" prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <Label text="Input [A]">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="btnLoadFile_A_cd" mnemonicParsing="false" onAction="#LoadDirAction_A_cd" prefHeight="25.0" prefWidth="85.0" text="Load Dir" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="btnClearInput_A_cd" mnemonicParsing="false" onAction="#ClearInputAction_A_cd" prefHeight="25.0" prefWidth="85.0" text="Clear Input" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="btnClearOutput_A_cd" mnemonicParsing="false" onAction="#ClearOutputAction_A_cd" prefHeight="25.0" prefWidth="85.0" text="Clear Output" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox fx:id="vboxInputOptions2_B_cd" layoutX="245.0" layoutY="20.0" prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <Label text="Input [B]">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="btnLoadFile_B_cd" mnemonicParsing="false" onAction="#LoadDirAction_B_cd" prefHeight="25.0" prefWidth="85.0" text="Load Dir" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="btnClearInput_B_cd" mnemonicParsing="false" onAction="#ClearInputAction_B_cd" prefHeight="25.0" prefWidth="85.0" text="Clear Input" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox prefHeight="25.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="btnClearOutput_B_cd" mnemonicParsing="false" onAction="#ClearOutputAction_B_cd" prefHeight="25.0" prefWidth="85.0" text="Clear Output" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox prefHeight="100.0" prefWidth="100.0">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Button fx:id="btnHash_cd" mnemonicParsing="false" onAction="#HashCompDirAction" prefHeight="25.0" prefWidth="85.0" text="Hash">
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Button>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox GridPane.rowIndex="2">
+                           <children>
+                              <VBox HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Label prefHeight="25.0" text="Input [A] (max. 3 GiB files) :" />
+                                    <TextArea fx:id="taInput_A_cd" prefHeight="75.0" prefWidth="380.0" wrapText="true" VBox.vgrow="ALWAYS">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </TextArea>
+                                    <Label layoutX="10.0" layoutY="10.0" prefHeight="25.0" text="Output [A]:" />
+                                    <ListView fx:id="lvOutput_A_cd" prefHeight="175.0" prefWidth="380.0" VBox.vgrow="ALWAYS">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </ListView>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Label prefHeight="25.0" text="Input [B] (max. 3 GiB files) :" />
+                                    <TextArea fx:id="taInput_B_cd" prefHeight="75.0" prefWidth="380.0" wrapText="true" VBox.vgrow="ALWAYS">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </TextArea>
+                                    <Label layoutX="10.0" layoutY="10.0" prefHeight="25.0" text="Output [B]:" />
+                                    <ListView fx:id="lvOutput_B_cd" prefHeight="175.0" prefWidth="380.0" VBox.vgrow="ALWAYS">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </ListView>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </GridPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+   <bottom>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="21.0" prefWidth="570.0" AnchorPane.leftAnchor="10.0">
+               <children>
+                  <Label prefHeight="21.0" prefWidth="65.0" text="Status:">
+                     <graphic>
+                        <FontIcon iconColor="#bbbbbb" iconLiteral="win10-pie-chart" iconSize="20" />
+                     </graphic>
+                  </Label>
+                  <Label fx:id="lbStatus" prefHeight="21.0" />
+                  <Label prefHeight="21.0" prefWidth="110.0" text="Execution Time:">
+                     <graphic>
+                        <FontIcon iconColor="#bbbbbb" iconLiteral="ps-clock" iconSize="17" />
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin></Label>
+                  <Label fx:id="lbExTime" prefHeight="21.0">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin></Label>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="21.0" prefWidth="300.0" AnchorPane.rightAnchor="10.0">
+               <children>
+                  <ProgressBar fx:id="pBar" minHeight="-Infinity" minWidth="-Infinity" prefHeight="10.0" prefWidth="100.0" progress="0.0">
+                     <HBox.margin>
+                        <Insets right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </ProgressBar>
+                  <Label prefHeight="21.0" prefWidth="52.0" text="CPU:">
+                     <graphic>
+                        <FontIcon iconColor="#bbbbbb" iconLiteral="ps-cpu" iconSize="18" />
+                     </graphic>
+                  </Label>
+                  <Label fx:id="lbCPUload" prefHeight="21.0" prefWidth="40.0" text="---" />
+                  <Label prefHeight="21.0" prefWidth="60.0" text="MEM:">
+                     <graphic>
+                        <FontIcon iconColor="#bbbbbb" iconLiteral="ps-ram" iconSize="20" />
+                     </graphic>
+                  </Label>
+                  <Label fx:id="lbMEMORYload" prefHeight="21.0" prefWidth="35.0" text="---" />
+               </children>
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </bottom>
+</BorderPane>
