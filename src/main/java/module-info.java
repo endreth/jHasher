@@ -1,4 +1,5 @@
-module hu.jhasher {
+module jHasher {
+
     requires javafx.controls;
     requires javafx.fxml;
     requires spring.security.crypto;
@@ -20,4 +21,5 @@ module hu.jhasher {
     opens controller to javafx.fxml;
     opens view to javafx.graphics;
     exports controller;
+
 }

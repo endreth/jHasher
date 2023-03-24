@@ -361,6 +361,7 @@ public class GUIController {
 
 
 	/* TEXT TAB */
+	@FXML
 	public void HashTextAction(ActionEvent actionEvent) {
 		invokeHashTextActionTask();
 	}
@@ -1160,7 +1161,7 @@ public class GUIController {
 		// Shows about information
 		Alert aboutDialog = new Alert(Alert.AlertType.INFORMATION);
 		aboutDialog.setTitle("About");
-		aboutDialog.setHeaderText("jHasher v1.0.1");
+		aboutDialog.setHeaderText("jHasher v1.0.2");
 		aboutDialog.setContentText("Endre Gy. Toth\nDennis Gabor College, Budapest (Hungary)\nCopyright 2023\nAll rights reserved.");
 
 		// Show the dialog box
