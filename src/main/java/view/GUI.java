@@ -30,7 +30,7 @@ public class GUI extends Application {
 			this.gc = loader.getController();
 
 			pStage =primaryStage;
-			pStage.setTitle("jHasher v1.0.1");
+			pStage.setTitle("jHasher v1.0.2");
 			pStage.getIcons().add(new Image("favpng_lightgray.png"));
 
 			pScene = new Scene(root, 800, 600);

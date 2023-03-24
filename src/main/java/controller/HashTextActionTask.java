@@ -13,7 +13,7 @@ import org.springframework.util.StopWatch;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HashTextActionTask extends Task<HBox> {
+public class HashTextActionTask extends Task<Void> {
     private final List<String> listToHash;
     private final String algorithm;
     private final CheckBox cbAddSalt;
@@ -33,7 +33,7 @@ public class HashTextActionTask extends Task<HBox> {
     }
 
     @Override
-    protected HBox call() throws Exception {
+    protected Void call() throws Exception {
 
         String inprogressTask = "Hashing in progress. Please wait!";
         updateMessage(inprogressTask);

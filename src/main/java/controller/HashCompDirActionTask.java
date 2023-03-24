@@ -163,54 +163,36 @@ public class HashCompDirActionTask extends Task<HBox> {
 
         // Coloring difference between lists: match lists
         for (int i = 0; i < hboxList1.size(); i++){
-            for (int n = i; n < hboxList2.size(); n++){
+            for (int n = 0; n < hboxList2.size(); n++){
                 HBox hbox1 = hboxList1.get(i);
                 HBox hbox2 = hboxList2.get(n);
                 Label label1 = (Label) hbox1.getChildren().get(2);
                 Label label2 = (Label) hbox2.getChildren().get(2);
-                if (!label1.getText().equals(label2.getText())) {
-                    String label1Style = label1.getStyle();
-                    String label2Style = label2.getStyle();
-                    if (label1Style.equals("-fx-text-fill: white;")){
-                        label1.setStyle("-fx-background-color: green");
-                    }
-                    if (label2Style.equals("-fx-text-fill: white;")){
-                        label2.setStyle("-fx-background-color: green");
-                    }
-                } else {
-                    // Color matching labels red
+                String one = label1.getText();
+                String two = label2.getText();
+                //System.out.println(i+": "+one+" = "+n+": "+two);
+                if(one.equals(two)){
                     label1.setStyle("-fx-background-color: red");
                     label2.setStyle("-fx-background-color: red");
                 }
             }
         }
-        // Coloring difference in each list: check for duplicates
-        for (int i = 0; i < hboxList1.size(); i++) {
-            for (int j = i + 1; j < hboxList1.size(); j++) {
+        // Coloring the rest to green
+        for (int i = 0; i < hboxList1.size(); i++){
+            for (int n = 0; n < hboxList2.size(); n++){
                 HBox hbox1 = hboxList1.get(i);
-                HBox hbox2 = hboxList1.get(j);
+                HBox hbox2 = hboxList2.get(n);
                 Label label1 = (Label) hbox1.getChildren().get(2);
                 Label label2 = (Label) hbox2.getChildren().get(2);
-                if (label1.getText().equals(label2.getText())) {
-                    // Color matching labels red
-                    label1.setStyle("-fx-background-color: red");
-                    label2.setStyle("-fx-background-color: red");
+                if (label1.getStyle().equals("-fx-text-fill: white;")){
+                    label1.setStyle("-fx-background-color: green");
+                }
+                if (label2.getStyle().equals("-fx-text-fill: white;")){
+                    label2.setStyle("-fx-background-color: green");
                 }
             }
         }
-        for (int i = 0; i < hboxList2.size(); i++) {
-            for (int j = i + 1; j < hboxList2.size(); j++) {
-                HBox hbox1 = hboxList2.get(i);
-                HBox hbox2 = hboxList2.get(j);
-                Label label1 = (Label) hbox1.getChildren().get(2);
-                Label label2 = (Label) hbox2.getChildren().get(2);
-                if (label1.getText().equals(label2.getText())) {
-                    // Color matching labels red
-                    label1.setStyle("-fx-background-color: red");
-                    label2.setStyle("-fx-background-color: red");
-                }
-            }
-        }
+
         updateHBoxList1(hboxList1);
         updateHBoxList2(hboxList2);
 
