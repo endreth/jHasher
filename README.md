@@ -62,5 +62,8 @@ In the current version of the program, the following options are available:
 </details>
 
 <details>
-<summary><b>Design and architecture details</b></summary><br>
+<summary><b>Acknowledgment</b></summary><br>
 </details>
+
+![github2](https://user-images.githubusercontent.com/104054427/227724910-a71f13dc-76ed-4a86-9e2a-61253ee4dead.png)
+The UI design was created with [Balsamiq Wireframes](https://balsamiq.com/)!
