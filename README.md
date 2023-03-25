@@ -61,8 +61,10 @@ In the current version of the program, the following options are available:
 
 </details>
 
-<details>
+<details open>
 <summary><b>Acknowledgment</b></summary><br>
+The hash implementations used in this program are sourced from a variety of libraries and APIs, including the <a href="https://docs.oracle.com/en/java/javase/18/security/java-cryptography-architecture-jca-reference-guide.html#GUID-2BCFDD85-D533-4E6C-8CE9-29990DEB0190">Java Cryptography Extension (JCE-JCA)</a>, the Bouncy Castle Crypto API, the Spring Security API, as well as proprietary code developed by Rctcwyvrn (Lily) and Phxql (Moritz Halbritter).
+    
 </details>
 
 ![github2](https://user-images.githubusercontent.com/104054427/227724910-a71f13dc-76ed-4a86-9e2a-61253ee4dead.png)
