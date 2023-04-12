@@ -1163,6 +1163,7 @@ public class GUIController {
 		Alert aboutDialog = new Alert(Alert.AlertType.INFORMATION);
 		aboutDialog.setTitle("About");
 		aboutDialog.getDialogPane().setGraphic(new ImageView("favpng_lightgray.png"));
+		aboutDialog.getDialogPane().setStyle("-fx-background-color: lightgrey;");
 		aboutDialog.setHeaderText("jHasher v1.0.2");
 		aboutDialog.setContentText("Endre Gy. Toth\nCopyright 2023\nAll rights reserved.");
 
