@@ -16,6 +16,7 @@ import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.image.ImageView;
 
 import java.awt.*;
 import java.io.File;
@@ -1161,8 +1162,9 @@ public class GUIController {
 		// Shows about information
 		Alert aboutDialog = new Alert(Alert.AlertType.INFORMATION);
 		aboutDialog.setTitle("About");
+		aboutDialog.getDialogPane().setGraphic(new ImageView("favpng_lightgray.png"));
 		aboutDialog.setHeaderText("jHasher v1.0.2");
-		aboutDialog.setContentText("Endre Gy. Toth\nDennis Gabor College, Budapest (Hungary)\nCopyright 2023\nAll rights reserved.");
+		aboutDialog.setContentText("Endre Gy. Toth\nCopyright 2023\nAll rights reserved.");
 
 		// Show the dialog box
 		aboutDialog.showAndWait();
