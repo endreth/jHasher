@@ -16,7 +16,7 @@ GNU/Linux, Microsoft Windows, or macOS (tested on Windows 10)<br>
 JRE (JDK 11 or later) (preferably 18+)<br>
 ### Usage
 
-Get the JAR artifact [HERE](https://github.com/endreth/jHasher/blob/master/jHasher-v1.0.2.jar)! (You must have JRE installed!)
+Get the JAR artifact [HERE](https://github.com/endreth/jHasher/blob/master/jHasher-1.0.2.jar)! (You must have JRE installed!)
 
 Running jHasher from the command line:
 ```
