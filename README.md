@@ -1,4 +1,4 @@
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/endreth/jHasher) ![GitHub](https://img.shields.io/github/license/endreth/jHasher) ![GitHub top language](https://img.shields.io/github/languages/top/endreth/jHasher?style=plastic) ![GitHub all releases](https://img.shields.io/github/downloads/endreth/jHasher/total)
+![GitHub last commit](https://img.shields.io/github/last-commit/endreth/jhasher?color=%232596be) ![GitHub](https://img.shields.io/github/license/endreth/jhasher?color=%232596be) ![GitHub top language](https://img.shields.io/github/languages/top/endreth/jhasher?color=%232596be) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/endreth/jhasher?color=%232596be) ![GitHub repo size](https://img.shields.io/github/repo-size/endreth/jhasher?color=%232596be)
 
 # jHasher v1.0.2
 
